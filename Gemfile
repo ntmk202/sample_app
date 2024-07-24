@@ -64,8 +64,14 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+  gem "webdrivers"         
+  gem "rails-controller-testing"
+  gem "minitest"               
+  gem "minitest-reporters"    
+  gem "guard"             
+  gem "guard-minitest"         
 end
 
-# group :production do
-#   gem "pg", "1.3.5"
-# end
+group :production do
+  gem "pg"
+end
