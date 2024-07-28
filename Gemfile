@@ -14,7 +14,7 @@ gem "turbo-rails"
 gem "stimulus-rails"
 gem "jbuilder"
 gem "faker"
-gem "will_paginate"
+gem 'will_paginate', '~> 3.1.0'
 gem "bootstrap-will_paginate"
 
 # Use Redis adapter to run Action Cable in production
