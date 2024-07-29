@@ -4,6 +4,8 @@ ruby "3.2.4"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.3", ">= 7.1.3.4"
+gem "image_processing"
+gem "active_storage_validations"
 gem "sprockets-rails"
 gem "bootstrap-sass"
 gem "sassc-rails" 
