@@ -1,6 +1,6 @@
 require "test_helper"
 
-class FollowingTest < ActionDispatch::IntegrationTest
+class Following < ActionDispatch::IntegrationTest
 
    def setup
       @user = users(:michael)
@@ -9,7 +9,7 @@ class FollowingTest < ActionDispatch::IntegrationTest
    end
 end
 
-class FollowPagesTest < FollowingTest
+class FollowPagesTest < Following
 
    test "following page" do
       get following_user_path(@user)

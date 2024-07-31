@@ -16,6 +16,7 @@ gem "turbo-rails"
 gem "stimulus-rails"
 gem "jbuilder"
 gem "faker"
+gem 'pagy'
 gem 'will_paginate', '~> 3.1.0'
 gem "bootstrap-will_paginate"
 

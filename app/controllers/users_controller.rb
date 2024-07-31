@@ -4,12 +4,14 @@ class UsersController < ApplicationController
   before_action :admin_user, only: :destroy
 
   def index
-    @users = User.where(activated: true).paginate(page: params[:page])
+    # @users = User.where(activated: true).paginate(page: params[:page])
+    @pagy, @users = pagy(User.where(activated: true))
   end
 
   def show
     @user = User.find(params[:id])
-    @microposts = @user.microposts.paginate(page: params[:page])
+    # @microposts = @user.microposts.paginate(page: params[:page])
+    @pagy, @microposts = pagy(@user.microposts)
     # redirect_to root_url and return unless @user
   end
 
@@ -48,6 +50,22 @@ class UsersController < ApplicationController
     User.find(params[:id]).destroy
     flash[:success] = "User deleted"
     redirect_to users_url, status: :see_other
+  end
+
+  def following
+    @title = "Following"
+    @user  = User.find(params[:id])
+    # @users = @user.following.paginate(page: params[:page])
+    @pagy, @users = pagy(@user.following)
+    render 'show_follow', status: :unprocessable_entity
+  end
+
+  def followers
+    @title = "Followers"
+    @user  = User.find(params[:id])
+    # @users = @user.followers.paginate(page: params[:page])
+    @pagy, @users = pagy(@user.followers)
+    render 'show_follow', status: :unprocessable_entity
   end
 
   private

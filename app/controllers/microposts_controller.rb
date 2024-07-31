@@ -1,5 +1,6 @@
 class MicropostsController < ApplicationController
     before_action :logged_in_user, only: [:create, :destroy]
+    before_action :correct_user,   only: :destroy
 
     def create
         @micropost = current_user.microposts.build(micropost_params)
@@ -8,7 +9,8 @@ class MicropostsController < ApplicationController
             flash[:success] = "Micropost created!"
             redirect_to root_url
         else
-            @feed_items = current_user.feed.paginate(page: params[:page])
+            # @feed_items = current_user.feed.paginate(page: params[:page])
+            @pagy, @feed_items = pagy(current_user.feed)
             render 'static_pages/home', status: :unprocessable_entity
         end
     end
